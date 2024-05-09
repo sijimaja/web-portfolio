@@ -1,0 +1,127 @@
+.navbar{
+    background-color: var(--yellow-theme-nav-background-color);
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    position: sticky;
+
+    &__container{
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: inherit;
+        padding: 0px 20px;
+        flex: 1;
+        &__logo{
+            color: var(--yellow-theme-main-color);
+            cursor: pointer;
+        }
+
+        &__menu{
+            display: flex;
+            list-style: none;
+            text-align: center;
+
+            &__item{
+                line-height: 40px;
+                margin-right: 1.5rem;
+                font-size: 1.6rem;
+
+                &::after{
+                    content: '';
+                    display: block;
+                    height: 3px;
+                    width: 0;
+                    background: transparent;
+                    transition: all 0.5s ease;
+                }
+
+                &:hover::after{
+                    width: 100%;
+                    background: var(--yellow-theme-main-color);
+                }
+
+                &__links{
+                    color: var(--yellow-theme-main-color);
+                    text-decoration: none;
+                    padding: 0.5rem;
+                }
+            }
+        }
+    }
+}
+
+.nav-icon{
+    display: none;
+}
+  @media only screen and (max-width: 768px) {
+    .navbar {
+        background-color: var(--yellow-theme-nav-background-color);
+        height: 80px;
+        display: flex;
+        justify-content: space-between; /* Adjusted to space-between to handle logo and icon positioning */
+        align-items: center;
+        font-size: 1.2rem;
+        position: sticky;
+        top: 0;
+        width: 100%; /* Ensures navbar spans the full width */
+        z-index: 10; /* Higher z-index to keep navbar above other content */
+      }
+      
+      .navbar__container {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding: 0px 20px;
+      }
+      
+      .navbar__container__logo {
+        color: var(--yellow-theme-main-color);
+        cursor: pointer;
+      }
+      
+      .navbar__container__menu {
+        display: flex;
+        flex-direction: column; /* Ensures items are arranged vertically */
+        justify-content: center;
+        position: fixed;
+        top: 80px; /* Adjust based on your navbar's actual height */
+        left: 0;
+        width: 100%; /* Full width */
+        height: calc(100vh - 80px); /* Takes full height minus the navbar */
+        background-color: #181818;
+        transform: translateX(-100%); /* Starts off-screen */
+        transition: transform 0.5s ease;
+        z-index: 5; /* Ensure it is under the nav-icon */
+        padding: 20px 0; /* Adds padding on the top and bottom for spacing */
+    }
+    
+    .navbar__container__menu.active {
+        transform: translateX(0); /* Brings the menu into view */
+    }
+    
+    .navbar__container__menu__item {
+        padding: 12px 20px; /* Adds padding for touch targets */
+        border-bottom: 1px solid #282828; /* Visual separation between items */
+        text-align: center; /* Centers text */
+    }
+    
+    .navbar__container__menu__item__links {
+        color: var(--yellow-theme-main-color);
+        text-decoration: none;
+        display: block; /* Makes the entire area clickable */
+    }
+      
+      .nav-icon {
+        display: block; /* Hidden by default */
+        cursor: pointer;
+        color: var(--yellow-theme-main-color);
+        position: absolute;
+        right: 20px; /* Positioning the menu icon */
+        top: 20px; /* Aligns with the navbar vertically */
+        z-index: 15; /* Ensures the icon is clickable and above the menu */
+      }
+  }
+  
